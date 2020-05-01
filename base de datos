@@ -1,0 +1,22 @@
+CREATE DATABASE  IF NOT EXISTS `progra3` ;
+USE `progra3`;
+
+
+CREATE TABLE `tb_usuariop` (
+  `IdUsuarios` int NOT NULL AUTO_INCREMENT,
+  `Usuario` varchar(50) DEFAULT NULL,
+  `Contrasenia` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`IdUsuarios`)
+);
+select * from tb_usuariop;
+
+CREATE TABLE `tb_historial` (
+  `IdHistorial` int NOT NULL AUTO_INCREMENT,
+  `IdUsuario` int DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
+  PRIMARY KEY (`IdHistorial`),
+  KEY `fk_usuario_idx` (`IdUsuario`),
+  CONSTRAINT `fk_usuario` FOREIGN KEY (`IdUsuario`) REFERENCES `tb_usuariop` (`IdUsuarios`)
+);
+INSERT INTO tb_usuariop (Usuario, Contrasenia)
+values("Sensei",12345678);
